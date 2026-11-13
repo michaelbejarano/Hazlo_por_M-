@@ -1,17 +1,40 @@
+
 ---
 const steps = [
-  { num: "01", icon: "📱", title: "Describe tu problema",   desc: "Abre la app, selecciona el tipo de servicio y cuéntanos qué ocurre. Tardas menos de 30 segundos." },
-  { num: "02", icon: "📍", title: "Vemos técnicos cercanos", desc: "El sistema detecta tu ubicación y muestra técnicos disponibles en tiempo real con sus calificaciones y precios." },
-  { num: "03", icon: "⚖️", title: "Compara y elige",         desc: "Revisa cotizaciones, perfiles y reseñas. Tú decides a quién contratar, sin presiones." },
-  { num: "04", icon: "✅", title: "Problema resuelto",        desc: "El técnico llega, resuelve y pagas desde la app. Califica el servicio para ayudar a la comunidad." },
+  {
+    num: "01",
+    icon: "📝",
+    title: "Publica tu encargo",
+    desc: "Cuéntanos qué necesitas, dónde y cuándo. Describe tu encargo y establece cuánto estás dispuesto a pagar."
+  },
+  {
+    num: "02",
+    icon: "🤝",
+    title: "Encuentra un colaborador",
+    desc: "Tu solicitud estará disponible para que los colaboradores interesados puedan revisarla y aceptar ayudarte."
+  },
+  {
+    num: "03",
+    icon: "💬",
+    title: "Coordina los detalles",
+    desc: "Ponte de acuerdo con el colaborador sobre los detalles del encargo, el horario y la forma de realizarlo."
+  },
+  {
+    num: "04",
+    icon: "⭐",
+    title: "Encargo completado",
+    desc: "Una vez finalizada la tarea, confirma que todo esté correcto y califica la experiencia para ayudar a la comunidad."
+  },
 ];
 ---
+
 <section class="how" id="como-funciona">
   <div class="how-inner">
     <div class="section-header">
-      <span class="section-label">El proceso</span>
-      <h2>De la emergencia a la solución<br/><em>en 4 pasos</em></h2>
+      <span class="section-label">Así de sencillo</span>
+      <h2>De un pendiente a una solución<br/><em>en 4 pasos</em></h2>
     </div>
+
     <div class="steps-grid">
       {steps.map((step) => (
         <div class="step-card">
@@ -32,17 +55,32 @@ const steps = [
     position: relative;
     overflow: hidden;
   }
+
   .how::before {
     content: '';
     position: absolute;
     top: 50%; left: 50%;
     transform: translate(-50%,-50%);
     width: 800px; height: 400px;
-    background: radial-gradient(ellipse, rgba(27,79,255,0.06) 0%, transparent 70%);
+    background: radial-gradient(
+      ellipse,
+      color-mix(in srgb, var(--orange) 6%, transparent) 0%,
+      transparent 70%
+    );
     pointer-events: none;
   }
-  .how-inner { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
-  .section-header { text-align: center; margin-bottom: 4rem; }
+
+  .how-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
   .section-label {
     display: inline-block;
     font-size: 0.75rem;
@@ -52,6 +90,7 @@ const steps = [
     color: var(--orange);
     margin-bottom: 1rem;
   }
+
   .section-header h2 {
     font-family: var(--font-display);
     font-size: clamp(2rem, 4vw, 3rem);
@@ -59,12 +98,18 @@ const steps = [
     letter-spacing: -1px;
     line-height: 1.15;
   }
-  .section-header h2 em { font-style: normal; color: var(--blue-lt); }
+
+  .section-header h2 em {
+    font-style: normal;
+    color: var(--orange);
+  }
+
   .steps-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
   }
+
   .step-card {
     padding: 2rem 1.75rem;
     background: var(--bg3);
@@ -72,23 +117,48 @@ const steps = [
     border-radius: 16px;
     transition: border-color 0.2s;
   }
-  .step-card:hover { border-color: rgba(27,79,255,0.35); }
+
+  .step-card:hover {
+    border-color: color-mix(in srgb, var(--orange) 50%, transparent);
+  }
+
   .step-num {
     font-family: var(--font-display);
     font-size: 2.5rem;
     font-weight: 800;
-    color: rgba(27,79,255,0.2);
+    color: color-mix(in srgb, var(--orange) 25%, transparent);
     line-height: 1;
     margin-bottom: 0.75rem;
   }
-  .step-icon { font-size: 2rem; margin-bottom: 1rem; line-height: 1; }
+
+  .step-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    line-height: 1;
+  }
+
   .step-card h3 {
     font-family: var(--font-display);
     font-size: 1.05rem;
     font-weight: 700;
     margin-bottom: 0.6rem;
   }
-  .step-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.65; }
-  @media (max-width: 768px) { .steps-grid { grid-template-columns: 1fr 1fr; } }
-  @media (max-width: 480px) { .steps-grid { grid-template-columns: 1fr; } }
+
+  .step-card p {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  @media (max-width: 768px) {
+    .steps-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .steps-grid {
+      grid-template-columns: 1fr;
+    }
+  }
 </style>
